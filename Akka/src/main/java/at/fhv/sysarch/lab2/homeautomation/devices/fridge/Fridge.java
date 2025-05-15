@@ -7,7 +7,6 @@ import at.fhv.sysarch.lab2.homeautomation.external.grpc.FridgeGrpcClient;
 
 import java.util.List;
 
-
 public class Fridge extends AbstractBehavior<FridgeCommand> {
     private final FridgeGrpcClient grpcClient;
 
@@ -32,11 +31,12 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
     }
 
     private Behavior<FridgeCommand> onAddProduct(AddProduct cmd) {
-        boolean success = grpcClient.addProduct(cmd.product.getName(), cmd.product.getWeight(), cmd.product.getPrice());
-        if (success) {
+        fridge.Fridge.AddProductResponse response = grpcClient.addProduct(
+                cmd.product.getName(), cmd.product.getWeight(), cmd.product.getPrice());
+        if (response.getSuccess()) {
             getContext().getLog().info("Receipt of Order: {}, {}", cmd.product.getName(), cmd.product.getPrice());
         } else {
-            getContext().getLog().warn("Failed to add product via gRPC: {}", cmd.product.getName());
+            getContext().getLog().warn("Failed to add product via gRPC: {}. Reason: {}", cmd.product.getName(), response.getMessage());
         }
         return this;
     }

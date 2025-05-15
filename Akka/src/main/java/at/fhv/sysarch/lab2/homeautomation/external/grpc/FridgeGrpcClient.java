@@ -5,7 +5,6 @@ import fridge.FridgeServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-
 import java.util.List;
 
 public class FridgeGrpcClient {
@@ -18,14 +17,13 @@ public class FridgeGrpcClient {
         stub = FridgeServiceGrpc.newBlockingStub(channel);
     }
 
-    public boolean addProduct(String name, double weight, double price) {
+    public Fridge.AddProductResponse addProduct(String name, double weight, double price) {
         Fridge.Product product = Fridge.Product.newBuilder()
                 .setName(name)
                 .setWeight(weight)
                 .setPrice(price)
                 .build();
-        Fridge.AddProductResponse response = stub.addProduct(product);
-        return response.getSuccess();
+        return stub.addProduct(product);
     }
 
     public boolean removeProduct(String name) {
@@ -46,4 +44,3 @@ public class FridgeGrpcClient {
         return history.getOrdersList();
     }
 }
-

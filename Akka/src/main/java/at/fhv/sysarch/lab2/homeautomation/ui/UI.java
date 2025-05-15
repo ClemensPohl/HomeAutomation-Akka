@@ -193,7 +193,7 @@ public class UI extends AbstractBehavior<Void> {
                     fridge.tell(new ListProducts());
                     break;
                 case "fridge-history":
-                    fridge.tell(new ListOrderHistory()); 
+                    fridge.tell(new ListOrderHistory());
                     break;
 
 
