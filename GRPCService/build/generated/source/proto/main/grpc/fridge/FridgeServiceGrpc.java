@@ -108,6 +108,37 @@ public final class FridgeServiceGrpc {
     return getListProductsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<fridge.Fridge.Empty,
+      fridge.Fridge.OrderHistoryList> getGetOrderHistoryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetOrderHistory",
+      requestType = fridge.Fridge.Empty.class,
+      responseType = fridge.Fridge.OrderHistoryList.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<fridge.Fridge.Empty,
+      fridge.Fridge.OrderHistoryList> getGetOrderHistoryMethod() {
+    io.grpc.MethodDescriptor<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList> getGetOrderHistoryMethod;
+    if ((getGetOrderHistoryMethod = FridgeServiceGrpc.getGetOrderHistoryMethod) == null) {
+      synchronized (FridgeServiceGrpc.class) {
+        if ((getGetOrderHistoryMethod = FridgeServiceGrpc.getGetOrderHistoryMethod) == null) {
+          FridgeServiceGrpc.getGetOrderHistoryMethod = getGetOrderHistoryMethod =
+              io.grpc.MethodDescriptor.<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetOrderHistory"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  fridge.Fridge.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  fridge.Fridge.OrderHistoryList.getDefaultInstance()))
+              .setSchemaDescriptor(new FridgeServiceMethodDescriptorSupplier("GetOrderHistory"))
+              .build();
+        }
+      }
+    }
+    return getGetOrderHistoryMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -176,6 +207,13 @@ public final class FridgeServiceGrpc {
         io.grpc.stub.StreamObserver<fridge.Fridge.ProductList> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListProductsMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getOrderHistory(fridge.Fridge.Empty request,
+        io.grpc.stub.StreamObserver<fridge.Fridge.OrderHistoryList> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetOrderHistoryMethod(), responseObserver);
+    }
   }
 
   /**
@@ -228,6 +266,14 @@ public final class FridgeServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListProductsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getOrderHistory(fridge.Fridge.Empty request,
+        io.grpc.stub.StreamObserver<fridge.Fridge.OrderHistoryList> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetOrderHistoryMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -265,6 +311,13 @@ public final class FridgeServiceGrpc {
     public fridge.Fridge.ProductList listProducts(fridge.Fridge.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListProductsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public fridge.Fridge.OrderHistoryList getOrderHistory(fridge.Fridge.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetOrderHistoryMethod(), getCallOptions(), request);
     }
   }
 
@@ -307,11 +360,20 @@ public final class FridgeServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListProductsMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<fridge.Fridge.OrderHistoryList> getOrderHistory(
+        fridge.Fridge.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetOrderHistoryMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_PRODUCT = 0;
   private static final int METHODID_REMOVE_PRODUCT = 1;
   private static final int METHODID_LIST_PRODUCTS = 2;
+  private static final int METHODID_GET_ORDER_HISTORY = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -341,6 +403,10 @@ public final class FridgeServiceGrpc {
         case METHODID_LIST_PRODUCTS:
           serviceImpl.listProducts((fridge.Fridge.Empty) request,
               (io.grpc.stub.StreamObserver<fridge.Fridge.ProductList>) responseObserver);
+          break;
+        case METHODID_GET_ORDER_HISTORY:
+          serviceImpl.getOrderHistory((fridge.Fridge.Empty) request,
+              (io.grpc.stub.StreamObserver<fridge.Fridge.OrderHistoryList>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -381,6 +447,13 @@ public final class FridgeServiceGrpc {
               fridge.Fridge.Empty,
               fridge.Fridge.ProductList>(
                 service, METHODID_LIST_PRODUCTS)))
+        .addMethod(
+          getGetOrderHistoryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              fridge.Fridge.Empty,
+              fridge.Fridge.OrderHistoryList>(
+                service, METHODID_GET_ORDER_HISTORY)))
         .build();
   }
 
@@ -432,6 +505,7 @@ public final class FridgeServiceGrpc {
               .addMethod(getAddProductMethod())
               .addMethod(getRemoveProductMethod())
               .addMethod(getListProductsMethod())
+              .addMethod(getGetOrderHistoryMethod())
               .build();
         }
       }

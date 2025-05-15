@@ -2,10 +2,7 @@ package at.fhv.sysarch.lab2.homeautomation.devices.fridge;
 
 import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.*;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.ListProducts;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.*;
 import at.fhv.sysarch.lab2.homeautomation.external.grpc.FridgeGrpcClient;
 
 import java.util.List;
@@ -30,13 +27,14 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
                 .onMessage(AddProduct.class, this::onAddProduct)
                 .onMessage(RemoveProduct.class, this::onRemoveProduct)
                 .onMessage(ListProducts.class, this::onListProducts)
+                .onMessage(ListOrderHistory.class, this::onListOrderHistory)
                 .build();
     }
 
     private Behavior<FridgeCommand> onAddProduct(AddProduct cmd) {
         boolean success = grpcClient.addProduct(cmd.product.getName(), cmd.product.getWeight(), cmd.product.getPrice());
         if (success) {
-            getContext().getLog().info("Added product via gRPC: {}", cmd.product.getName());
+            getContext().getLog().info("Receipt of Order: {}, {}", cmd.product.getName(), cmd.product.getPrice());
         } else {
             getContext().getLog().warn("Failed to add product via gRPC: {}", cmd.product.getName());
         }
@@ -54,7 +52,6 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
     }
 
     private Behavior<FridgeCommand> onListProducts(ListProducts cmd) {
-        // Call the gRPC client to get the list
         List<fridge.Fridge.Product> products = grpcClient.listProducts();
         if (products.isEmpty()) {
             System.out.println("Fridge is empty.");
@@ -62,6 +59,19 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
             System.out.println("Products in fridge:");
             for (fridge.Fridge.Product p : products) {
                 System.out.printf("- %s (%.2f kg, %.2f €)%n", p.getName(), p.getWeight(), p.getPrice());
+            }
+        }
+        return this;
+    }
+
+    private Behavior<FridgeCommand> onListOrderHistory(ListOrderHistory cmd) {
+        List<fridge.Fridge.Order> orders = grpcClient.getOrderHistory();
+        if (orders.isEmpty()) {
+            System.out.println("Order history is empty.");
+        } else {
+            System.out.println("Order history:");
+            for (fridge.Fridge.Order o : orders) {
+                System.out.printf("- %s (%.2f kg, %.2f €) at %d%n", o.getProductName(), o.getWeight(), o.getPrice(), o.getTimestamp());
             }
         }
         return this;

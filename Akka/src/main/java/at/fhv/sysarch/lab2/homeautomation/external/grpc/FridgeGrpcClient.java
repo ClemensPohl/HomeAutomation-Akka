@@ -40,5 +40,10 @@ public class FridgeGrpcClient {
         Fridge.ProductList list = stub.listProducts(Fridge.Empty.newBuilder().build());
         return list.getProductsList();
     }
+
+    public List<Fridge.Order> getOrderHistory() {
+        Fridge.OrderHistoryList history = stub.getOrderHistory(Fridge.Empty.newBuilder().build());
+        return history.getOrdersList();
+    }
 }
 

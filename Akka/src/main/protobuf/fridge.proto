@@ -6,6 +6,7 @@ service FridgeService {
   rpc AddProduct (Product) returns (AddProductResponse);
   rpc RemoveProduct (RemoveProductRequest) returns (RemoveProductResponse);
   rpc ListProducts (Empty) returns (ProductList);
+  rpc GetOrderHistory (Empty) returns (OrderHistoryList);
 }
 
 message Product {
@@ -33,3 +34,16 @@ message ProductList {
 }
 
 message Empty {}
+
+// ORDER HISTORY
+
+message Order {
+  string product_name = 1;
+  double weight = 2;
+  double price = 3;
+  int64 timestamp = 4;
+}
+
+message OrderHistoryList {
+  repeated Order orders = 1;
+}

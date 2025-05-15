@@ -92,6 +92,14 @@ public abstract class FridgeServiceClient extends FridgeServiceClientPowerApi im
       
     
   
+    
+      
+        private final SingleResponseRequestBuilder<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList> getOrderHistoryRequestBuilder(akka.grpc.internal.InternalChannel channel){
+          return new JavaUnaryRequestBuilder<>(getOrderHistoryDescriptor, channel, options, settings, defaultMetadata, ec);
+        }
+      
+    
+  
 
       
 
@@ -158,6 +166,27 @@ public abstract class FridgeServiceClient extends FridgeServiceClientPowerApi im
         }
       
 
+        /**
+         * For access to method metadata use the parameterless version of getOrderHistory
+         */
+        public java.util.concurrent.CompletionStage<fridge.Fridge.OrderHistoryList> getOrderHistory(fridge.Fridge.Empty request) {
+          return getOrderHistory().invoke(request);
+        }
+
+        /**
+         * Lower level "lifted" version of the method, giving access to request metadata etc.
+         * prefer getOrderHistory(fridge.Fridge.Empty) if possible.
+         */
+        
+          
+            public SingleResponseRequestBuilder<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList> getOrderHistory()
+          
+        
+        {
+          return getOrderHistoryRequestBuilder(channel.internalChannel());
+        }
+      
+
       
         private static MethodDescriptor<fridge.Fridge.Product, fridge.Fridge.AddProductResponse> addProductDescriptor =
           MethodDescriptor.<fridge.Fridge.Product, fridge.Fridge.AddProductResponse>newBuilder()
@@ -198,6 +227,20 @@ public abstract class FridgeServiceClient extends FridgeServiceClientPowerApi im
             .setFullMethodName(MethodDescriptor.generateFullMethodName("fridge.FridgeService", "ListProducts"))
             .setRequestMarshaller(new ProtoMarshaller<fridge.Fridge.Empty>(EmptySerializer))
             .setResponseMarshaller(new ProtoMarshaller<fridge.Fridge.ProductList>(ProductListSerializer))
+            .setSampledToLocalTracing(true)
+            .build();
+        
+        private static MethodDescriptor<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList> getOrderHistoryDescriptor =
+          MethodDescriptor.<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList>newBuilder()
+            .setType(
+   MethodDescriptor.MethodType.UNARY 
+  
+  
+  
+)
+            .setFullMethodName(MethodDescriptor.generateFullMethodName("fridge.FridgeService", "GetOrderHistory"))
+            .setRequestMarshaller(new ProtoMarshaller<fridge.Fridge.Empty>(EmptySerializer))
+            .setResponseMarshaller(new ProtoMarshaller<fridge.Fridge.OrderHistoryList>(OrderHistoryListSerializer))
             .setSampledToLocalTracing(true)
             .build();
         

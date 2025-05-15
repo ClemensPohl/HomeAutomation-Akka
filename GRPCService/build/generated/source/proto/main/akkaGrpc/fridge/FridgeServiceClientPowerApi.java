@@ -50,4 +50,17 @@ public abstract class FridgeServiceClientPowerApi {
         throw new java.lang.UnsupportedOperationException();
     }
   
+    /**
+     * Lower level "lifted" version of the method, giving access to request metadata etc.
+     * prefer getOrderHistory(fridge.Fridge.Empty) if possible.
+     */
+    
+      
+        public SingleResponseRequestBuilder<fridge.Fridge.Empty, fridge.Fridge.OrderHistoryList> getOrderHistory()
+      
+    
+    {
+        throw new java.lang.UnsupportedOperationException();
+    }
+  
 }

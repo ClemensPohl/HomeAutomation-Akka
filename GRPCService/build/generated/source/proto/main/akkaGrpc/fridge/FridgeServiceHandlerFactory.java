@@ -172,6 +172,12 @@ public class FridgeServiceHandlerFactory {
               .thenApply(e -> GrpcMarshalling.marshal(e, ProductListSerializer, writer, system, eHandler));
             break;
           
+          case "GetOrderHistory":
+            response = GrpcMarshalling.unmarshal(request.entity(), EmptySerializer, mat, reader)
+              .thenCompose(e -> implementation.getOrderHistory(e))
+              .thenApply(e -> GrpcMarshalling.marshal(e, OrderHistoryListSerializer, writer, system, eHandler));
+            break;
+          
           default:
             CompletableFuture<akka.http.javadsl.model.HttpResponse> result = new CompletableFuture<>();
             result.completeExceptionally(new UnsupportedOperationException("Not implemented: " + method));

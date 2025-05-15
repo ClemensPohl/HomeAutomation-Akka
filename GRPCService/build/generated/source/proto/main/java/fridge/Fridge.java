@@ -3696,6 +3696,1561 @@ public final class Fridge {
 
   }
 
+  public interface OrderOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fridge.Order)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string product_name = 1;</code>
+     * @return The productName.
+     */
+    java.lang.String getProductName();
+    /**
+     * <code>string product_name = 1;</code>
+     * @return The bytes for productName.
+     */
+    com.google.protobuf.ByteString
+        getProductNameBytes();
+
+    /**
+     * <code>double weight = 2;</code>
+     * @return The weight.
+     */
+    double getWeight();
+
+    /**
+     * <code>double price = 3;</code>
+     * @return The price.
+     */
+    double getPrice();
+
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code fridge.Order}
+   */
+  public static final class Order extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fridge.Order)
+      OrderOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Order.newBuilder() to construct.
+    private Order(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Order() {
+      productName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Order();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return fridge.Fridge.internal_static_fridge_Order_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return fridge.Fridge.internal_static_fridge_Order_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              fridge.Fridge.Order.class, fridge.Fridge.Order.Builder.class);
+    }
+
+    public static final int PRODUCT_NAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object productName_ = "";
+    /**
+     * <code>string product_name = 1;</code>
+     * @return The productName.
+     */
+    @java.lang.Override
+    public java.lang.String getProductName() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        productName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string product_name = 1;</code>
+     * @return The bytes for productName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getProductNameBytes() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int WEIGHT_FIELD_NUMBER = 2;
+    private double weight_ = 0D;
+    /**
+     * <code>double weight = 2;</code>
+     * @return The weight.
+     */
+    @java.lang.Override
+    public double getWeight() {
+      return weight_;
+    }
+
+    public static final int PRICE_FIELD_NUMBER = 3;
+    private double price_ = 0D;
+    /**
+     * <code>double price = 3;</code>
+     * @return The price.
+     */
+    @java.lang.Override
+    public double getPrice() {
+      return price_;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productName_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(weight_) != 0) {
+        output.writeDouble(2, weight_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(price_) != 0) {
+        output.writeDouble(3, price_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(4, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, productName_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(weight_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, weight_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(price_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, price_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, timestamp_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof fridge.Fridge.Order)) {
+        return super.equals(obj);
+      }
+      fridge.Fridge.Order other = (fridge.Fridge.Order) obj;
+
+      if (!getProductName()
+          .equals(other.getProductName())) return false;
+      if (java.lang.Double.doubleToLongBits(getWeight())
+          != java.lang.Double.doubleToLongBits(
+              other.getWeight())) return false;
+      if (java.lang.Double.doubleToLongBits(getPrice())
+          != java.lang.Double.doubleToLongBits(
+              other.getPrice())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRODUCT_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getProductName().hashCode();
+      hash = (37 * hash) + WEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getWeight()));
+      hash = (37 * hash) + PRICE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPrice()));
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static fridge.Fridge.Order parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.Order parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.Order parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static fridge.Fridge.Order parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static fridge.Fridge.Order parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fridge.Fridge.Order parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(fridge.Fridge.Order prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fridge.Order}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fridge.Order)
+        fridge.Fridge.OrderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return fridge.Fridge.internal_static_fridge_Order_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return fridge.Fridge.internal_static_fridge_Order_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                fridge.Fridge.Order.class, fridge.Fridge.Order.Builder.class);
+      }
+
+      // Construct using fridge.Fridge.Order.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        productName_ = "";
+        weight_ = 0D;
+        price_ = 0D;
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return fridge.Fridge.internal_static_fridge_Order_descriptor;
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.Order getDefaultInstanceForType() {
+        return fridge.Fridge.Order.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.Order build() {
+        fridge.Fridge.Order result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.Order buildPartial() {
+        fridge.Fridge.Order result = new fridge.Fridge.Order(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(fridge.Fridge.Order result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.productName_ = productName_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.weight_ = weight_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.price_ = price_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof fridge.Fridge.Order) {
+          return mergeFrom((fridge.Fridge.Order)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(fridge.Fridge.Order other) {
+        if (other == fridge.Fridge.Order.getDefaultInstance()) return this;
+        if (!other.getProductName().isEmpty()) {
+          productName_ = other.productName_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getWeight() != 0D) {
+          setWeight(other.getWeight());
+        }
+        if (other.getPrice() != 0D) {
+          setPrice(other.getPrice());
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                productName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 17: {
+                weight_ = input.readDouble();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 17
+              case 25: {
+                price_ = input.readDouble();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 25
+              case 32: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object productName_ = "";
+      /**
+       * <code>string product_name = 1;</code>
+       * @return The productName.
+       */
+      public java.lang.String getProductName() {
+        java.lang.Object ref = productName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          productName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string product_name = 1;</code>
+       * @return The bytes for productName.
+       */
+      public com.google.protobuf.ByteString
+          getProductNameBytes() {
+        java.lang.Object ref = productName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          productName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string product_name = 1;</code>
+       * @param value The productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        productName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string product_name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProductName() {
+        productName_ = getDefaultInstance().getProductName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string product_name = 1;</code>
+       * @param value The bytes for productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        productName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private double weight_ ;
+      /**
+       * <code>double weight = 2;</code>
+       * @return The weight.
+       */
+      @java.lang.Override
+      public double getWeight() {
+        return weight_;
+      }
+      /**
+       * <code>double weight = 2;</code>
+       * @param value The weight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWeight(double value) {
+
+        weight_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double weight = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWeight() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        weight_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double price_ ;
+      /**
+       * <code>double price = 3;</code>
+       * @return The price.
+       */
+      @java.lang.Override
+      public double getPrice() {
+        return price_;
+      }
+      /**
+       * <code>double price = 3;</code>
+       * @param value The price to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrice(double value) {
+
+        price_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double price = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrice() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        price_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fridge.Order)
+    }
+
+    // @@protoc_insertion_point(class_scope:fridge.Order)
+    private static final fridge.Fridge.Order DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new fridge.Fridge.Order();
+    }
+
+    public static fridge.Fridge.Order getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Order>
+        PARSER = new com.google.protobuf.AbstractParser<Order>() {
+      @java.lang.Override
+      public Order parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Order> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Order> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public fridge.Fridge.Order getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface OrderHistoryListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fridge.OrderHistoryList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    java.util.List<fridge.Fridge.Order> 
+        getOrdersList();
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    fridge.Fridge.Order getOrders(int index);
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    int getOrdersCount();
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    java.util.List<? extends fridge.Fridge.OrderOrBuilder> 
+        getOrdersOrBuilderList();
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    fridge.Fridge.OrderOrBuilder getOrdersOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code fridge.OrderHistoryList}
+   */
+  public static final class OrderHistoryList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fridge.OrderHistoryList)
+      OrderHistoryListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use OrderHistoryList.newBuilder() to construct.
+    private OrderHistoryList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private OrderHistoryList() {
+      orders_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OrderHistoryList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return fridge.Fridge.internal_static_fridge_OrderHistoryList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return fridge.Fridge.internal_static_fridge_OrderHistoryList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              fridge.Fridge.OrderHistoryList.class, fridge.Fridge.OrderHistoryList.Builder.class);
+    }
+
+    public static final int ORDERS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<fridge.Fridge.Order> orders_;
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<fridge.Fridge.Order> getOrdersList() {
+      return orders_;
+    }
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends fridge.Fridge.OrderOrBuilder> 
+        getOrdersOrBuilderList() {
+      return orders_;
+    }
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    @java.lang.Override
+    public int getOrdersCount() {
+      return orders_.size();
+    }
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    @java.lang.Override
+    public fridge.Fridge.Order getOrders(int index) {
+      return orders_.get(index);
+    }
+    /**
+     * <code>repeated .fridge.Order orders = 1;</code>
+     */
+    @java.lang.Override
+    public fridge.Fridge.OrderOrBuilder getOrdersOrBuilder(
+        int index) {
+      return orders_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < orders_.size(); i++) {
+        output.writeMessage(1, orders_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < orders_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, orders_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof fridge.Fridge.OrderHistoryList)) {
+        return super.equals(obj);
+      }
+      fridge.Fridge.OrderHistoryList other = (fridge.Fridge.OrderHistoryList) obj;
+
+      if (!getOrdersList()
+          .equals(other.getOrdersList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getOrdersCount() > 0) {
+        hash = (37 * hash) + ORDERS_FIELD_NUMBER;
+        hash = (53 * hash) + getOrdersList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static fridge.Fridge.OrderHistoryList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static fridge.Fridge.OrderHistoryList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static fridge.Fridge.OrderHistoryList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(fridge.Fridge.OrderHistoryList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fridge.OrderHistoryList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fridge.OrderHistoryList)
+        fridge.Fridge.OrderHistoryListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return fridge.Fridge.internal_static_fridge_OrderHistoryList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return fridge.Fridge.internal_static_fridge_OrderHistoryList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                fridge.Fridge.OrderHistoryList.class, fridge.Fridge.OrderHistoryList.Builder.class);
+      }
+
+      // Construct using fridge.Fridge.OrderHistoryList.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (ordersBuilder_ == null) {
+          orders_ = java.util.Collections.emptyList();
+        } else {
+          orders_ = null;
+          ordersBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return fridge.Fridge.internal_static_fridge_OrderHistoryList_descriptor;
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.OrderHistoryList getDefaultInstanceForType() {
+        return fridge.Fridge.OrderHistoryList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.OrderHistoryList build() {
+        fridge.Fridge.OrderHistoryList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public fridge.Fridge.OrderHistoryList buildPartial() {
+        fridge.Fridge.OrderHistoryList result = new fridge.Fridge.OrderHistoryList(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(fridge.Fridge.OrderHistoryList result) {
+        if (ordersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            orders_ = java.util.Collections.unmodifiableList(orders_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.orders_ = orders_;
+        } else {
+          result.orders_ = ordersBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(fridge.Fridge.OrderHistoryList result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof fridge.Fridge.OrderHistoryList) {
+          return mergeFrom((fridge.Fridge.OrderHistoryList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(fridge.Fridge.OrderHistoryList other) {
+        if (other == fridge.Fridge.OrderHistoryList.getDefaultInstance()) return this;
+        if (ordersBuilder_ == null) {
+          if (!other.orders_.isEmpty()) {
+            if (orders_.isEmpty()) {
+              orders_ = other.orders_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureOrdersIsMutable();
+              orders_.addAll(other.orders_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.orders_.isEmpty()) {
+            if (ordersBuilder_.isEmpty()) {
+              ordersBuilder_.dispose();
+              ordersBuilder_ = null;
+              orders_ = other.orders_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              ordersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getOrdersFieldBuilder() : null;
+            } else {
+              ordersBuilder_.addAllMessages(other.orders_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                fridge.Fridge.Order m =
+                    input.readMessage(
+                        fridge.Fridge.Order.parser(),
+                        extensionRegistry);
+                if (ordersBuilder_ == null) {
+                  ensureOrdersIsMutable();
+                  orders_.add(m);
+                } else {
+                  ordersBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<fridge.Fridge.Order> orders_ =
+        java.util.Collections.emptyList();
+      private void ensureOrdersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          orders_ = new java.util.ArrayList<fridge.Fridge.Order>(orders_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          fridge.Fridge.Order, fridge.Fridge.Order.Builder, fridge.Fridge.OrderOrBuilder> ordersBuilder_;
+
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public java.util.List<fridge.Fridge.Order> getOrdersList() {
+        if (ordersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(orders_);
+        } else {
+          return ordersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public int getOrdersCount() {
+        if (ordersBuilder_ == null) {
+          return orders_.size();
+        } else {
+          return ordersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public fridge.Fridge.Order getOrders(int index) {
+        if (ordersBuilder_ == null) {
+          return orders_.get(index);
+        } else {
+          return ordersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder setOrders(
+          int index, fridge.Fridge.Order value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.set(index, value);
+          onChanged();
+        } else {
+          ordersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder setOrders(
+          int index, fridge.Fridge.Order.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder addOrders(fridge.Fridge.Order value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.add(value);
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder addOrders(
+          int index, fridge.Fridge.Order value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.add(index, value);
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder addOrders(
+          fridge.Fridge.Order.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.add(builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder addOrders(
+          int index, fridge.Fridge.Order.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder addAllOrders(
+          java.lang.Iterable<? extends fridge.Fridge.Order> values) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, orders_);
+          onChanged();
+        } else {
+          ordersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder clearOrders() {
+        if (ordersBuilder_ == null) {
+          orders_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          ordersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public Builder removeOrders(int index) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.remove(index);
+          onChanged();
+        } else {
+          ordersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public fridge.Fridge.Order.Builder getOrdersBuilder(
+          int index) {
+        return getOrdersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public fridge.Fridge.OrderOrBuilder getOrdersOrBuilder(
+          int index) {
+        if (ordersBuilder_ == null) {
+          return orders_.get(index);  } else {
+          return ordersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public java.util.List<? extends fridge.Fridge.OrderOrBuilder> 
+           getOrdersOrBuilderList() {
+        if (ordersBuilder_ != null) {
+          return ordersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(orders_);
+        }
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public fridge.Fridge.Order.Builder addOrdersBuilder() {
+        return getOrdersFieldBuilder().addBuilder(
+            fridge.Fridge.Order.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public fridge.Fridge.Order.Builder addOrdersBuilder(
+          int index) {
+        return getOrdersFieldBuilder().addBuilder(
+            index, fridge.Fridge.Order.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .fridge.Order orders = 1;</code>
+       */
+      public java.util.List<fridge.Fridge.Order.Builder> 
+           getOrdersBuilderList() {
+        return getOrdersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          fridge.Fridge.Order, fridge.Fridge.Order.Builder, fridge.Fridge.OrderOrBuilder> 
+          getOrdersFieldBuilder() {
+        if (ordersBuilder_ == null) {
+          ordersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              fridge.Fridge.Order, fridge.Fridge.Order.Builder, fridge.Fridge.OrderOrBuilder>(
+                  orders_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          orders_ = null;
+        }
+        return ordersBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fridge.OrderHistoryList)
+    }
+
+    // @@protoc_insertion_point(class_scope:fridge.OrderHistoryList)
+    private static final fridge.Fridge.OrderHistoryList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new fridge.Fridge.OrderHistoryList();
+    }
+
+    public static fridge.Fridge.OrderHistoryList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OrderHistoryList>
+        PARSER = new com.google.protobuf.AbstractParser<OrderHistoryList>() {
+      @java.lang.Override
+      public OrderHistoryList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<OrderHistoryList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OrderHistoryList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public fridge.Fridge.OrderHistoryList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_fridge_Product_descriptor;
   private static final 
@@ -3726,6 +5281,16 @@ public final class Fridge {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_fridge_Empty_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fridge_Order_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fridge_Order_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fridge_OrderHistoryList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fridge_OrderHistoryList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3742,12 +5307,17 @@ public final class Fridge {
       "\n\004name\030\001 \001(\t\"9\n\025RemoveProductResponse\022\017\n" +
       "\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"0\n\013Produ" +
       "ctList\022!\n\010products\030\001 \003(\0132\017.fridge.Produc" +
-      "t\"\007\n\005Empty2\314\001\n\rFridgeService\0229\n\nAddProdu" +
-      "ct\022\017.fridge.Product\032\032.fridge.AddProductR" +
-      "esponse\022L\n\rRemoveProduct\022\034.fridge.Remove" +
-      "ProductRequest\032\035.fridge.RemoveProductRes" +
-      "ponse\0222\n\014ListProducts\022\r.fridge.Empty\032\023.f" +
-      "ridge.ProductListb\006proto3"
+      "t\"\007\n\005Empty\"O\n\005Order\022\024\n\014product_name\030\001 \001(" +
+      "\t\022\016\n\006weight\030\002 \001(\001\022\r\n\005price\030\003 \001(\001\022\021\n\ttime" +
+      "stamp\030\004 \001(\003\"1\n\020OrderHistoryList\022\035\n\006order" +
+      "s\030\001 \003(\0132\r.fridge.Order2\210\002\n\rFridgeService" +
+      "\0229\n\nAddProduct\022\017.fridge.Product\032\032.fridge" +
+      ".AddProductResponse\022L\n\rRemoveProduct\022\034.f" +
+      "ridge.RemoveProductRequest\032\035.fridge.Remo" +
+      "veProductResponse\0222\n\014ListProducts\022\r.frid" +
+      "ge.Empty\032\023.fridge.ProductList\022:\n\017GetOrde" +
+      "rHistory\022\r.fridge.Empty\032\030.fridge.OrderHi" +
+      "storyListb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3789,6 +5359,18 @@ public final class Fridge {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fridge_Empty_descriptor,
         new java.lang.String[] { });
+    internal_static_fridge_Order_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_fridge_Order_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fridge_Order_descriptor,
+        new java.lang.String[] { "ProductName", "Weight", "Price", "Timestamp", });
+    internal_static_fridge_OrderHistoryList_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_fridge_OrderHistoryList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fridge_OrderHistoryList_descriptor,
+        new java.lang.String[] { "Orders", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -19,6 +19,9 @@ public interface FridgeService {
   
   java.util.concurrent.CompletionStage<fridge.Fridge.ProductList> listProducts(fridge.Fridge.Empty in);
   
+  
+  java.util.concurrent.CompletionStage<fridge.Fridge.OrderHistoryList> getOrderHistory(fridge.Fridge.Empty in);
+  
 
   static String name = "fridge.FridgeService";
   static akka.grpc.ServiceDescription description = new akka.grpc.internal.ServiceDescriptionImpl(name, Fridge.getDescriptor());
@@ -37,6 +40,8 @@ public interface FridgeService {
       public static ProtobufSerializer<fridge.Fridge.RemoveProductResponse> RemoveProductResponseSerializer = new GoogleProtobufSerializer<>(fridge.Fridge.RemoveProductResponse.parser());
     
       public static ProtobufSerializer<fridge.Fridge.ProductList> ProductListSerializer = new GoogleProtobufSerializer<>(fridge.Fridge.ProductList.parser());
+    
+      public static ProtobufSerializer<fridge.Fridge.OrderHistoryList> OrderHistoryListSerializer = new GoogleProtobufSerializer<>(fridge.Fridge.OrderHistoryList.parser());
     
   }
 }

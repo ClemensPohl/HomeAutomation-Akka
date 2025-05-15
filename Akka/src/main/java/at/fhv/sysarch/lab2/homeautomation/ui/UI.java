@@ -9,10 +9,7 @@ import akka.actor.typed.javadsl.Behaviors;
 import akka.actor.typed.javadsl.Receive;
 import at.fhv.sysarch.lab2.homeautomation.commands.airCondition.AirConditionCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.blinds.BlindsCommand;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.ListProducts;
-import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.*;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.MediaCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.PlayMovie;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.StopMovie;
@@ -193,6 +190,9 @@ public class UI extends AbstractBehavior<Void> {
                     break;
                 case "fridge-list":
                     fridge.tell(new ListProducts());
+                    break;
+                case "fridge-history":
+                    fridge.tell(new ListOrderHistory()); 
                     break;
 
 
