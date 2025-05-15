@@ -1,0 +1,4 @@
+[info] Generating Akka gRPC service interface for [fridge.FridgeService]
+[info] Generating Akka gRPC Client [fridge.FridgeService]
+[info] Generating Akka gRPC Lifted Client interface[fridge.FridgeService]
+[info] Generating Akka gRPC service handler for fridge.FridgeService

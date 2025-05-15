@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package fridge;
+
+service FridgeService {
+  rpc AddProduct (Product) returns (AddProductResponse);
+  rpc RemoveProduct (RemoveProductRequest) returns (RemoveProductResponse);
+  rpc ListProducts (Empty) returns (ProductList);
+}
+
+message Product {
+  string name = 1;
+  double weight = 2;
+  double price = 3;
+}
+
+message AddProductResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message RemoveProductRequest {
+  string name = 1;
+}
+
+message RemoveProductResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ProductList {
+  repeated Product products = 1;
+}
+
+message Empty {}
