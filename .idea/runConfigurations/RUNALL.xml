@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RUNALL" type="CompoundRunConfigurationType">
+    <toRun name="GRPC SERVER" type="Application" />
+    <toRun name="HOMEAUTOMATION" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>

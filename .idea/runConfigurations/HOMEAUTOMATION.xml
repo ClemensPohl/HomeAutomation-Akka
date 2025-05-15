@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="HOMEAUTOMATION" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="at.fhv.sysarch.lab2.HomeAutomationSystem" />
+    <module name="Lab2Template.main" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
