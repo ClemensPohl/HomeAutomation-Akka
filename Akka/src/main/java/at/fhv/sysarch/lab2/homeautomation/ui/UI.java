@@ -100,7 +100,8 @@ public class UI extends AbstractBehavior<Void> {
                     ... FRIDGE COMMANDS ...
                     fridge-add <name> <weight> <price>   → Add product to fridge
                     fridge-remove <name>                 → Remove product from fridge
-                    fridge-list                          → List products in fridge
+                    fridge-list                          → Lists products in fridge
+                    fridge-history                       → Lists all ever odered products in fridge
                     ...                   ...
                 """);
 
