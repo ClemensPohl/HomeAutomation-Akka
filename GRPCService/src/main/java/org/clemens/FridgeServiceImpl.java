@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FridgeServiceImpl extends FridgeServiceGrpc.FridgeServiceImplBase {
     private static final int MAX_PRODUCTS = 10;
-    private static final double MAX_WEIGHT = 50.0; // in kg
+    private static final double MAX_WEIGHT = 50.0;
 
     private final List<Fridge.Product> products = new ArrayList<>();
     private final List<Fridge.Order> orderHistory = new ArrayList<>();
