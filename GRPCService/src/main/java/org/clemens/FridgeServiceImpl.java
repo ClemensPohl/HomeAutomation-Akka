@@ -34,8 +34,10 @@ public class FridgeServiceImpl extends FridgeServiceGrpc.FridgeServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    // TODO WRONG FRIDGE EMTPY IDK
+
     @Override
-    public void listProducts(Empty request, StreamObserver<Fridge.ProductList> responseObserver) {
+    public void listProducts(Fridge.Empty request, StreamObserver<Fridge.ProductList> responseObserver) {
         Fridge.ProductList.Builder listBuilder = Fridge.ProductList.newBuilder();
         listBuilder.addAllProducts(products);
         responseObserver.onNext(listBuilder.build());

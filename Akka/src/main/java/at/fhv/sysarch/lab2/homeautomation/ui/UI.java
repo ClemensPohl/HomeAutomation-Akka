@@ -9,6 +9,9 @@ import akka.actor.typed.javadsl.Behaviors;
 import akka.actor.typed.javadsl.Receive;
 import at.fhv.sysarch.lab2.homeautomation.commands.airCondition.AirConditionCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.blinds.BlindsCommand;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.MediaCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.PlayMovie;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.StopMovie;
@@ -18,6 +21,7 @@ import at.fhv.sysarch.lab2.homeautomation.commands.temperature.ReadTemperature;
 import at.fhv.sysarch.lab2.homeautomation.commands.temperature.TemperatureCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.temperature.SetEnvironmentMode;
 import at.fhv.sysarch.lab2.homeautomation.commands.weather.WeatherTypes;
+import at.fhv.sysarch.lab2.homeautomation.devices.fridge.Product;
 import at.fhv.sysarch.lab2.homeautomation.environment.EnvironmentMode;
 import at.fhv.sysarch.lab2.homeautomation.environment.MqttEnvironmentActor;
 import at.fhv.sysarch.lab2.homeautomation.environment.TemperatureEnvironmentActor;
@@ -36,6 +40,7 @@ public class UI extends AbstractBehavior<Void> {
     private final ActorRef<BlindsCommand> blinds;
     private final ActorRef<MediaCommand> mediaStation;
     private final ActorRef<MqttEnvironmentActor.MqttCommand> mqttEnv;
+    private final ActorRef<FridgeCommand> fridge;
 
 
     public static Behavior<Void> create(
@@ -45,9 +50,10 @@ public class UI extends AbstractBehavior<Void> {
             ActorRef<WeatherEnvironmentActor.WeatherEnvironmentCommand> weatherEnv,
             ActorRef<BlindsCommand> blinds,
             ActorRef<MediaCommand> mediaStation,
-            ActorRef<MqttEnvironmentActor.MqttCommand> mqttEnv
+            ActorRef<MqttEnvironmentActor.MqttCommand> mqttEnv,
+            ActorRef<FridgeCommand> fridge
     ) {
-        return Behaviors.setup(ctx -> new UI(ctx, tempSensor, airCondition, tempEnv, weatherEnv, blinds, mediaStation, mqttEnv));
+        return Behaviors.setup(ctx -> new UI(ctx, tempSensor, airCondition, tempEnv, weatherEnv, blinds, mediaStation, mqttEnv, fridge));
     }
 
     private UI(
@@ -57,7 +63,8 @@ public class UI extends AbstractBehavior<Void> {
             ActorRef<TemperatureEnvironmentActor.TemperatureEnvironmentCommand> tempEnv,
             ActorRef<WeatherEnvironmentActor.WeatherEnvironmentCommand> weatherEnv,
             ActorRef<BlindsCommand> blinds,
-            ActorRef<MediaCommand> mediaStation, ActorRef<MqttEnvironmentActor.MqttCommand> mqttEnv
+            ActorRef<MediaCommand> mediaStation, ActorRef<MqttEnvironmentActor.MqttCommand> mqttEnv,
+            ActorRef<FridgeCommand> fridge
     ) {
         super(context);
         this.tempSensor = tempSensor;
@@ -67,6 +74,7 @@ public class UI extends AbstractBehavior<Void> {
         this.blinds = blinds;
         this.mediaStation = mediaStation;
         this.mqttEnv = mqttEnv;
+        this.fridge = fridge;
 
         new Thread(this::runCommandLine).start();
         context.getLog().info("UI started");
@@ -91,6 +99,11 @@ public class UI extends AbstractBehavior<Void> {
                 movie-stop           → Stop the movie
                 env-mode <mode>      → Set environment mode (INTERNAL, EXTERNAL, OFF)
                 quit                 → Exit
+                    ... FRIDGE COMMANDS ...
+                    fridge-add <name> <weight> <price>   → Add product to fridge
+                    fridge-remove <name>                 → Remove product from fridge
+                    fridge-list                          → List products in fridge
+                    ...                   ...
                 """);
 
         while (scanner.hasNextLine() && !(input = scanner.nextLine()).equalsIgnoreCase("quit")) {
@@ -159,6 +172,28 @@ public class UI extends AbstractBehavior<Void> {
                         }
                     }
                     break;
+                case "fridge-add":
+                    if (command.length == 4) {
+                        String name = command[1];
+                        double weight = Double.parseDouble(command[2]);
+                        double price = Double.parseDouble(command[3]);
+                        fridge.tell(new AddProduct(new Product(name, weight, price)));
+                    } else {
+                        System.out.println("Usage: fridge-add <name> <weight> <price>");
+                    }
+                    break;
+
+                case "fridge-remove":
+                    if (command.length == 2) {
+                        fridge.tell(new RemoveProduct(command[1]));
+                    } else {
+                        System.out.println("Usage: fridge-remove <name>");
+                    }
+                    break;
+//TODO
+//                case "fridge-list":
+//                    fridge.tell(new ListProducts()); // You need to define and handle this command!
+//                    break;
 
 
                 default:

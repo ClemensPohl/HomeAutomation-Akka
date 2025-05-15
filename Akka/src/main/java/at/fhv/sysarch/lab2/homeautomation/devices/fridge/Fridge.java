@@ -5,27 +5,20 @@ import akka.actor.typed.javadsl.*;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
+import at.fhv.sysarch.lab2.homeautomation.external.grpc.FridgeGrpcClient;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Fridge extends AbstractBehavior<FridgeCommand> {
+    private final FridgeGrpcClient grpcClient;
 
-    private final int maxProducts;
-    private final double maxWeight;
-    private final List<Product> products;
-
-    public static Behavior<FridgeCommand> create(int maxProducts, double maxWeight) {
-        return Behaviors.setup(ctx -> new Fridge(ctx, maxProducts, maxWeight));
+    public static Behavior<FridgeCommand> create() {
+        return Behaviors.setup(Fridge::new);
     }
 
-    private Fridge(ActorContext<FridgeCommand> context, int maxProducts, double maxWeight) {
+    private Fridge(ActorContext<FridgeCommand> context) {
         super(context);
-        this.maxProducts = maxProducts;
-        this.maxWeight = maxWeight;
-        this.products = new ArrayList<>();
-        getContext().getLog().info("Fridge started with capacity {} items and max weight {} kg", maxProducts, maxWeight);
+        this.grpcClient = new FridgeGrpcClient("localhost", 50051);
+        getContext().getLog().info("Fridge actor started, using remote gRPC fridge");
     }
 
     @Override
@@ -37,27 +30,21 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
     }
 
     private Behavior<FridgeCommand> onAddProduct(AddProduct cmd) {
-        int currentCount = SpaceSensor.getProductCount(products);
-        double currentWeight = WeightSensor.getTotalWeight(products);
-
-        if (currentCount >= maxProducts) {
-            getContext().getLog().warn("Cannot add product: Fridge is full");
-        } else if (currentWeight + cmd.product.getWeight() > maxWeight) {
-            getContext().getLog().warn("Cannot add product: Weight limit exceeded");
+        boolean success = grpcClient.addProduct(cmd.product.getName(), cmd.product.getWeight(), cmd.product.getPrice());
+        if (success) {
+            getContext().getLog().info("Added product via gRPC: {}", cmd.product.getName());
         } else {
-            products.add(cmd.product);
-            getContext().getLog().info("Added product: {}", cmd.product.getName());
+            getContext().getLog().warn("Failed to add product via gRPC: {}", cmd.product.getName());
         }
         return this;
     }
 
-
     private Behavior<FridgeCommand> onRemoveProduct(RemoveProduct cmd) {
-        boolean removed = products.removeIf(p -> p.getName().equalsIgnoreCase(cmd.productName));
-        if (removed) {
-            getContext().getLog().info("Removed product: {}", cmd.productName);
+        boolean success = grpcClient.removeProduct(cmd.productName);
+        if (success) {
+            getContext().getLog().info("Removed product via gRPC: {}", cmd.productName);
         } else {
-            getContext().getLog().warn("Product not found: {}", cmd.productName);
+            getContext().getLog().warn("Failed to remove product via gRPC: {}", cmd.productName);
         }
         return this;
     }

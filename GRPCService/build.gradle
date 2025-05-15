@@ -1,7 +1,14 @@
 plugins {
     id 'java'
+    id 'application'
     id 'com.google.protobuf' version '0.9.4'
     id 'com.lightbend.akka.grpc.gradle' version '2.5.5'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 akkaGrpc {
@@ -21,12 +28,18 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = 'org.clemens.Main'
+}
+
+
 dependencies {
     implementation 'org.scala-lang:scala-library:2.13.15'
     implementation 'io.grpc:grpc-netty-shaded:1.63.0'
     implementation 'io.grpc:grpc-protobuf:1.63.0'
     implementation 'io.grpc:grpc-stub:1.63.0'
     implementation 'com.google.protobuf:protobuf-java:3.25.3'
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }

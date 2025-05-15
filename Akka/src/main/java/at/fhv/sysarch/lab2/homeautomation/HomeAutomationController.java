@@ -9,6 +9,7 @@ import akka.actor.typed.javadsl.Behaviors;
 import akka.actor.typed.javadsl.Receive;
 
 import at.fhv.sysarch.lab2.homeautomation.commands.airCondition.AirConditionCommand;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.temperature.TemperatureCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.weather.WeatherCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.blinds.BlindsCommand;
@@ -61,8 +62,11 @@ public class HomeAutomationController extends AbstractBehavior<Void> {
                 context.spawn(MqttEnvironmentActor.create(weatherEnv, temperatureEnv), "MqttEnvironment");
 
 
-        ActorRef<Void> ui = context.spawn(UI.create(temperatureSensor, airCondition, temperatureEnv, weatherEnv, blinds, mediaStation, mqttEnvironment),
-                "UI");
+        ActorRef<FridgeCommand> fridge = context.spawn(at.fhv.sysarch.lab2.homeautomation.devices.fridge.Fridge.create(), "Fridge");
+
+        ActorRef<Void> ui = context.spawn(UI.create(
+                temperatureSensor, airCondition, temperatureEnv, weatherEnv, blinds, mediaStation, mqttEnvironment, fridge
+        ), "UI");
 
 
         getContext().getLog().info("HomeAutomation Application started");

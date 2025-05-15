@@ -1,8 +1,5 @@
 package fridge;
 
-import akka.protobufv3.internal.Empty;
-import io.grpc.stub.StreamObserver;
-
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
@@ -190,8 +187,6 @@ public final class FridgeServiceGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return FridgeServiceGrpc.bindService(this);
     }
-
-      public abstract void listProducts(Empty request, StreamObserver<Fridge.ProductList> responseObserver);
   }
 
   /**
