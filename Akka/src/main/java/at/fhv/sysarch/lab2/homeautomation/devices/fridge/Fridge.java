@@ -4,8 +4,11 @@ import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.*;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.ListProducts;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
 import at.fhv.sysarch.lab2.homeautomation.external.grpc.FridgeGrpcClient;
+
+import java.util.List;
 
 
 public class Fridge extends AbstractBehavior<FridgeCommand> {
@@ -26,6 +29,7 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
         return newReceiveBuilder()
                 .onMessage(AddProduct.class, this::onAddProduct)
                 .onMessage(RemoveProduct.class, this::onRemoveProduct)
+                .onMessage(ListProducts.class, this::onListProducts)
                 .build();
     }
 
@@ -45,6 +49,20 @@ public class Fridge extends AbstractBehavior<FridgeCommand> {
             getContext().getLog().info("Removed product via gRPC: {}", cmd.productName);
         } else {
             getContext().getLog().warn("Failed to remove product via gRPC: {}", cmd.productName);
+        }
+        return this;
+    }
+
+    private Behavior<FridgeCommand> onListProducts(ListProducts cmd) {
+        // Call the gRPC client to get the list
+        List<fridge.Fridge.Product> products = grpcClient.listProducts();
+        if (products.isEmpty()) {
+            System.out.println("Fridge is empty.");
+        } else {
+            System.out.println("Products in fridge:");
+            for (fridge.Fridge.Product p : products) {
+                System.out.printf("- %s (%.2f kg, %.2f €)%n", p.getName(), p.getWeight(), p.getPrice());
+            }
         }
         return this;
     }

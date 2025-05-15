@@ -11,6 +11,7 @@ import at.fhv.sysarch.lab2.homeautomation.commands.airCondition.AirConditionComm
 import at.fhv.sysarch.lab2.homeautomation.commands.blinds.BlindsCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.AddProduct;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.FridgeCommand;
+import at.fhv.sysarch.lab2.homeautomation.commands.fridge.ListProducts;
 import at.fhv.sysarch.lab2.homeautomation.commands.fridge.RemoveProduct;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.MediaCommand;
 import at.fhv.sysarch.lab2.homeautomation.commands.mediaStation.PlayMovie;
@@ -190,10 +191,9 @@ public class UI extends AbstractBehavior<Void> {
                         System.out.println("Usage: fridge-remove <name>");
                     }
                     break;
-//TODO
-//                case "fridge-list":
-//                    fridge.tell(new ListProducts()); // You need to define and handle this command!
-//                    break;
+                case "fridge-list":
+                    fridge.tell(new ListProducts());
+                    break;
 
 
                 default:
